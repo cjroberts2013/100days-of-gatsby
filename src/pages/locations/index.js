@@ -1,17 +1,40 @@
 import * as React from "react";
 import {Link} from "gatsby";
 import Navigation from "./../../components/Navigation";
+import {graphql} from "gatsby";
 
-const Locations = () => {
+export const query = graphql`
+query MyQuery {
+  allContentfulCity {
+    edges {
+      node {
+        city
+        description
+        location {
+          lat
+          lon
+        }
+      }
+    }
+  }
+}
+`
+
+const Locations = ({data}) => {
   return (
     <div>
-    <Navigation />
+      <Navigation />
       <h1>Our Store Locations</h1>
       <p>We currently have three store locations in the following cities...</p>
+      
       <ul>
-        <li><Link to="/locations/houston">Houston</Link></li>
-        <li><Link to="/locations/austin">Austin</Link></li>
-        <li><Link to="/locations/dallas">Dallas</Link></li>
+        {
+          data.allContentfulCity.edges.map(({node:city}) => (
+            <li key={city.city}>
+              <Link to={city.city.toLowerCase()}>{city.city} - {city.description}</Link>
+            </li>
+          ))
+        }
       </ul>
     </div>
   )
