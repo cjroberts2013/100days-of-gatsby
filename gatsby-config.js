@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "100days-of-gatsby",
-    siteUrl: "https://100daysofgatsbymaster60637"
+    title: "Charles Roberts Design",
+    siteUrl: "https://charlesrobertsdesign.gtsb.io/"
   },
   plugins: [
     {
