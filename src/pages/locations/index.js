@@ -31,7 +31,7 @@ const Locations = ({data}) => {
         {
           data.allContentfulCity.edges.map(({node:city}) => (
             <li key={city.city}>
-              <Link to={city.city.toLowerCase()}>{city.city} - {city.description}</Link>
+              <Link to={city.city.toLowerCase()}>{city.city}</Link>
             </li>
           ))
         }
